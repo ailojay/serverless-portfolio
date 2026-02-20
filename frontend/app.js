@@ -4,13 +4,14 @@ async function loadProjects() {
     const container = document.getElementById('projects-container');
     
     try {
-        const response = await fetch(`${API_BASE_URL}/projects`);
+        const response = await fetch(`${API_BASE_URL}/projects?limit=10`);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         
-        const projects = await response.json();
+        const data = await response.json();
+        const projects = data.projects;
         
         if (projects.length === 0) {
             container.innerHTML = '<div class="loading">No projects found.</div>';

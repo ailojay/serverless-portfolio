@@ -34,10 +34,9 @@ resource "aws_iam_policy" "dynamodb_read_policy" {
         Effect = "Allow"
         Action = [
           "dynamodb:GetItem",
-          "dynamodb:Scan",
           "dynamodb:Query"
         ]
-        Resource = aws_dynamodb_table.projects.arn
+        "Resource": "arn:aws:dynamodb:us-east-1:912874556898:table/serverless-portfolio-projects-dev"
       }
     ]
   })

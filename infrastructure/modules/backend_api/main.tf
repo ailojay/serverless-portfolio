@@ -31,6 +31,12 @@ resource "aws_apigatewayv2_route" "projects" {
   target    = "integrations/${aws_apigatewayv2_integration.projects.id}"
 }
 
+resource "aws_apigatewayv2_route" "project_detail" {
+  api_id    = aws_apigatewayv2_api.main.id
+  route_key = "GET /projects/{id}"
+  target    = "integrations/${aws_apigatewayv2_integration.projects.id}"
+}
+
 # Integrations
 resource "aws_apigatewayv2_integration" "health" {
   api_id           = aws_apigatewayv2_api.main.id
